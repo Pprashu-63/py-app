@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-python-app
+  name: flask-app-deployment
 spec:
-  replicas: 3
+  replicas: 3  # Number of pods you want to run
   selector:
     matchLabels:
-      app: my-python-app
+      app: flask-app
   template:
     metadata:
       labels:
-        app: my-python-app
+        app: flask-app
     spec:
       containers:
-      - name: my-python-app
-        image: your-registry/my-python-app:latest
-        ports:
-        - containerPort: 80
+        - name: flask-app
+          image:  myflask:app  # Replace with your Docker image name and tag
+          ports:
+            - containerPort: 5000  # Port your Flask app is running on
